@@ -27,10 +27,12 @@ lbs = [0,1]
 acc = accuracy_score(y,y_pred)
 cf = confusion_matrix(y,y_pred, labels=lbs)
 pre = precision_score(y,y_pred, labels=lbs, pos_label=0)
+re = recall_score(y,y_pred, labels=lbs, pos_label=0)
 
 r = dt_clf.predict([[0,1,1,1]])
 
 print(cf)
 print(acc)
 print(pre)
+print(re)
 print(r)
