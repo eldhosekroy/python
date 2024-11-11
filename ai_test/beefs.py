@@ -1,31 +1,38 @@
-from queue import PriorityQueue
-graph = {
-    '1' : ['2','3'],
-    '2' : ['4'],
-    '3' : [],
-    '4' : ['5'],
-    '5' : []
-}
-hur = {
-    '1' : 3,
-    '2' : 2,
-    '3' : 6,
-    '4' : 1,
-    '5' : 0
-    }
-def beefs(graph,start,goal):
-    pq = PriorityQueue()
-    pq.put((hur[start],start))
-    visited = set()
-    while not pq.empty():
-        heur, curr = pq.get()
-        print(curr,end = " ")
-        if curr == goal:
-            print('goal reached\n')
-            return
-        visited.add(curr)
-        for i in graph[curr]:
-            if i not in visited:
-                pq.put((hur[i],i))
+import heapq
 
-beefs(graph,'1','5')
+def best_fs(graph, start, goal, heuristic):
+    pq, visited = [(heuristic[start], start)], set()
+    
+    while pq:
+        _, curr = heapq.heappop(pq)
+        print(f"Visiting node: {curr}")
+
+        if curr == goal:
+            print(f"Goal {goal} reached!")
+            return True
+
+        visited.add(curr)
+        
+        for neighbor in graph[curr]:
+            if neighbor not in visited:
+                heapq.heappush(pq, (heuristic[neighbor], neighbor))
+                visited.add(neighbor)
+    
+    print(f"Goal {goal} is not reachable.")
+    return False
+
+graph = {
+    'A': ['B', 'C'],
+    'B': ['A', 'D'],
+    'C': ['A', 'D'],
+    'D': ['B', 'C', 'E'],
+    'E': ['D']
+}
+heuristic = {
+    'A': 4,
+    'B': 3,
+    'C': 3,
+    'D': 1,
+    'E': 0
+}
+best_fs(graph, 'A', 'E', heuristic)
