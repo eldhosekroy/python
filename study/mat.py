@@ -30,4 +30,5 @@ def val():
               
     return mat(mat1,mat2)
 val = val()
-print(val)
+for row in val:
+    print(row)
