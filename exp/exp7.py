@@ -1,36 +1,18 @@
-from sklearn.feature_extraction.text import TfidfVectorizer
+import nltk
+from nltk.corpus import stopwords
 
-import pandas as pd
+# Step 1: Download stopwords if not already available
+nltk.download('stopwords')
 
-# Step 1: Define the documents
+# Step 2: Load Stopwords
+stop_words = set(stopwords.words('english'))
 
-documents = [
+# Step 3: Define Tokens
+tokens = ["NLTK", "is", "a", "powerful", "library", "for", "natural", "language",
+          "processing", "."]
 
- "Data is the new oil in the world of technology.",
+# Step 4: Remove Stopwords
+filtered_tokens = [word for word in tokens if word.lower() not in stop_words]
 
- "Big data helps in better decision making.",
-
- "The amount of data generated every day is massive."
-
-]
-
-# Step 2: Initialize the TF-IDF Vectorizer
-
-vectorizer = TfidfVectorizer()
-
-# Step 3: Compute TF-IDF matrix
-
-tfidf_matrix = vectorizer.fit_transform(documents)
-
-# Step 4: Extract feature names (unique words)
-
-feature_names = vectorizer.get_feature_names_out()
-
-# Step 5: Create DataFrame for better visualization
-
-df = pd.DataFrame(tfidf_matrix.toarray(), columns=feature_names)
-
-# Step 6: Display the TF-IDF values
-
-print("TF-IDF Matrix:\n")
-print(df)
+# Step 5: Print Results
+print("Filtered Tokens:", filtered_tokens)
