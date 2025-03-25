@@ -1,0 +1,13 @@
+Algorithm for HMM POS Tagging
+
+Step 1: Import nltk, treebank, and hmm, then download the required datasets.
+
+Step 2: Load first 3000 sentences as training data and next 100 as testing data from the Treebank corpus.
+
+Step 3: Initialize the Hidden Markov Model Trainer.
+
+Step 4: Train the HMM POS tagger using the training dataset.
+
+Step 5: Tokenize a sample sentence and use the trained tagger to predict POS tags.
+
+Step 6: Print the POS-tagged words.
