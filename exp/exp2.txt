@@ -1,0 +1,11 @@
+Algorithm for Generating Concordance Using NLTK
+
+Step 1: Import the nltk library.
+
+Step 2: Open and read the contents of the text file (mydata.txt).
+
+Step 3: Tokenize the text into words using nltk.word_tokenize().
+
+Step 4: Create an nltk.Text object using the tokenized words.
+
+Step 5: Generate and display a concordance for a specific word (e.g., "network") with a specified width and number of lines.
