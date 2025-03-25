@@ -1,0 +1,11 @@
+Algorithm for Stopword Removal
+
+Step 1: Import nltk and stopwords, then download the stopwords dataset if not already available.
+
+Step 2: Load the set of English stopwords using stopwords.words('english').
+
+Step 3: Define a list of tokens (words) that need to be processed.
+
+Step 4: Iterate through each token, convert it to lowercase, and remove it if it exists in the stopwords list.
+
+Step 5: Print the filtered list of tokens that do not contain stopwords.
